@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head><title>English Multisearch</title></head>
+	<style>
+        div.wrapper {
+			position: absolute;
+		    left: 50%;
+		    top: 33%;
+		    width: 300px;
+		    height: 100px;
+		    margin-top: -50px; /* Half of total height */
+		    margin-left: -150px; /* Half of total width */
+        }
+
+        input[type="text"] {
+			position: relative;
+            display: block;
+			padding: 0px;
+            margin : 0 auto;
+			height: 30px; 
+			width: 100%;
+        }
+    </style>
+	<body style="background-color:white">
+
+		<div class='wrapper'>
+			<h1 align="center" style="color:#FF4000">English Multisearch</h1>
+			<!-- <p>What <b>English</b> word would you like to multisearch? Type below, then press enter please.</p> -->
+			<input type="text" id="boxu" autofocus>
+			</br>
+			<div style="text-align: center;">
+				<button onclick="search(); return false;" style="height: 35px;width: 90px;margin-right: 11px;margin-top: 15px">SEARCH</button>
+				<button onclick="searchWithWordOfTheDay(); return false;" style="height: 35px;width: 160px;margin-right: 11px;margin-top: 15px">WORD OF THE DAY</button>
+			<div>
+		</div>
+		<script>
+			document.getElementById("boxu").onkeydown = function(e) {searchy(e)};
+			function searchy(e) {
+				if (event.ctrlKey && event.keyCode === 13) {
+				 searchWithWordOfTheDay();		
+				} 
+				else if (event.keyCode === 13) {
+				 search();
+				}
+			}
+			
+			function search() {
+				var q = document.getElementById("boxu").value.trim();
+				document.getElementById("boxu").value = q;
+				
+				window.open("https://www.linguee.com/english-german/search?source=auto&query=" + q.replace(" ", "%20"), "linguee");
+				window.open("https://www.wordreference.com/ende/" + q.replace(" ", "%20"), "wordreference");
+				<!-- window.open("https://context.reverso.net/%C3%BCbersetzung/englisch-deutsch/" + q.replace(" ", "+"), "reverso"); -->
+				window.open("http://dictionary.cambridge.org/us/dictionary/english/" + q.replace(" ", "-"), "dictionary cambridge us");
+				<!-- window.open("http://www.learnersdictionary.com/definition/" + q.replace(" ", "%20"), "learners dictionary merriam-webster"); -->
+				window.open("http://www.dict.cc/?s=" + q, "dict.cc");
+				window.open("https://de.pons.com/%C3%BCbersetzung?q=" + q + "&l=deen&in=&lf=de", "de.pons");
+				window.open("https://www.deepl.com/de/translator#en/de/" + q.replace(" ", "%20"), "deepl");
+				window.open("https://translate.google.de/?hl=de&tab=TT&sl=en&tl=de&text=" + q.replace(" ", "%20") + "&op=translate", "google uebersetzer");
+			}
+
+			function searchWithWordOfTheDay() {
+				search();
+				window.open("https://www.merriam-webster.com/word-of-the-day");
+			}
+		</script>
+	</body>
+</html>
+
+	
